@@ -142,7 +142,7 @@ func (this *Memory) Write(input []byte) (int, error) {
 	if this.cursor+uint64(len(input)) > this.Size {
 		newCursor = this.Size
 	} else {
-		newCursor = this.cursor + uint64(len(input))
+		newCursor = this.cursor + uint64(len(input)-1)
 	}
 	bytesWritten := copy(this.gobuf[this.cursor:newCursor], input)
 	this.cursor = newCursor
